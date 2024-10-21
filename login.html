@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      /* Estilo geral da página */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Estilo do contêiner de login */
+      .login-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+      }
+
+      /* Título do formulário */
+      .login-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      /* Campos de entrada */
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      /* Botão de envio */
+      button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #110356;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #1a0580;
+      }
+
+      /* Link de cadastro */
+      .btn-container a {
+        display: inline-block;
+        margin-top: 15px;
+        color: #110356;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .btn-container a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="E-mail"
+          required
+        /><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Senha"
+          required
+        /><br />
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="loginError" style="color: red"></p>
+
+      <!-- Link para a página de cadastro -->
+      <div class="btn-container">
+        <a href="cadastrosite.html">Cadastrar</a>
+      </div>
+    </div>
+
+    <script>
+      // Função para validar o e-mail
+      function validarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
+
+      // Evento de submissão do formulário
+      document.getElementById("loginForm").onsubmit = function (event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const loginError = document.getElementById("loginError");
+
+        // Validação do e-mail e senha
+        if (!validarEmail(email)) {
+          loginError.textContent = "Por favor, insira um e-mail válido!";
+          return;
+        }
+
+        if (password === "") {
+          loginError.textContent = "Por favor, insira sua senha!";
+          return;
+        }
+
+        const usuarioValido = "larissacamposcardoso@gmail.com";
+        const senhaValida = "senha123";
+
+        if (email === usuarioValido && password === senhaValida) {
+          window.location.href = "home.html";
+        } else {
+          loginError.textContent = "Usuário ou senha incorretos!";
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nossos Projetos</title>
+    <style>
+      /* Estilo geral da página */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      /* Container do slider */
+      .slider-container {
+        width: 80%;
+        max-width: 1000px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background-color: #fff;
+      }
+
+      /* Slides */
+      .slide {
+        display: none;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      /* Botões de navegação (anterior e próximo) */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        user-select: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+      }
+
+      .prev {
+        left: 10px;
+      }
+
+      .next {
+        right: 10px;
+      }
+
+      /* Indicadores de slide */
+      .dots {
+        text-align: center;
+        margin: 15px 0;
+      }
+
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+      }
+
+      .dot.active {
+        background-color: #717171;
+      }
+
+      /* Card de detalhes do projeto */
+      .project-card {
+        display: none;
+        width: 80%;
+        max-width: 900px;
+        background-color: #ffffff;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-card h3 {
+        margin: 0 0 10px;
+        color: #333;
+      }
+
+      .project-card p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+      }
+      /* Botão de seta para voltar */
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      .back-button:hover {
+        color: #555;
+      }
+      /* Legenda sobre a imagem */
+      .slide .project-description {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Botão de seta para voltar à home -->
+    <button class="back-button" onclick="window.location.href='home.html'">
+      &#8592;
+    </button>
+    <div class="slider-container">
+      <div class="slide active" onclick="showProjectDetails(1)">
+        <img src="instalacoeseletricas.jpg" alt="Projeto 1" />
+        <div class="project-description">
+          Clique para ver mais detalhes sobre esse projeto
+        </div>
+      </div>
+      <div class="slide" onclick="showProjectDetails(2)">
+        <img src="rvcemig.jpg" alt="Projeto 2" />
+        <div class="project-description">
+          Clique para ver mais detalhes sobre esse projeto
+        </div>
+      </div>
+      <div class="slide" onclick="showProjectDetails(3)">
+        <img src="instalacoeshospitalares.png" alt="Projeto 3" />
+        <div class="project-description">
+          Clique para ver mais detalhes sobre esse projeto
+        </div>
+      </div>
+
+      <!-- Botões de navegação -->
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <!-- Card de detalhes dos projetos -->
+    <div id="projectDetails1" class="project-card">
+      <h3>Projetos de Instalações Elétricas</h3>
+      <p>
+        A CGW prepara desenhos de energia elétrica com base no plano de
+        instalação da loja e nos requisitos elétricos dos equipamentos. Projeto
+        de distribuição elétrica, tabelas de painéis e diagrama de linha serão
+        preparados com base nas cargas necessárias.
+      </p>
+    </div>
+
+    <div id="projectDetails2" class="project-card">
+      <h3>Realidade Virtual CEMIG</h3>
+      <p>
+        O objetivo do sistema VRCEMIG é permitir que eventos de campo atualizem
+        a realidade do centro de controle da empresa de energia elétrica. O
+        oposto também acontece: mudanças nos componentes do centro de controle
+        atualizarão o comportamento dos componentes elétricos em campo. Esta
+        estratégia também permite à empresa de energia poupar tempo e dinheiro
+        durante a fase de aprendizagem. Na verdade, os aprendizes podem operar
+        todas as subestações a partir de um ponto específico (centro de controle
+        da empresa). Além disso, este ambiente virtual permite aos usuários
+        explorar diferentes possibilidades sem comprometer a sua segurança.
+      </p>
+    </div>
+
+    <div id="projectDetails3" class="project-card">
+      <h3>Instalações Hospitalares</h3>
+      <p>
+        Nosso aplicativo de realidade virtual oferece uma experiência imersiva
+        para os usuários, permitindo que eles explorem ambientes
+        tridimensionais. Este projeto foi desenvolvido para a indústria de jogos
+        e para treinamentos em ambientes simulados.
+      </p>
+    </div>
+
+    <!-- Indicadores de slide -->
+    <div class="dots">
+      <span class="dot active" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function changeSlide(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+
+      function showProjectDetails(projectNumber) {
+        const cards = document.getElementsByClassName("project-card");
+        for (let i = 0; i < cards.length; i++) {
+          cards[i].style.display = "none";
+        }
+        document.getElementById(
+          `projectDetails${projectNumber}`
+        ).style.display = "block";
+      }
+      // Função para atualizar o card com os detalhes do projeto
+      function updateProjectCard(slideIndex) {
+        projectTitle.textContent = projectDetails[slideIndex].title;
+        projectDescription.textContent = projectDetails[slideIndex].description;
+      }
+
+      // Atualiza o card inicialmente com os detalhes do primeiro projeto
+      updateProjectCard(currentSlide);
+    </script>
+  </body>
+</html>

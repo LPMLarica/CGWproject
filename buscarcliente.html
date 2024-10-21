@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca de Cliente</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      #form-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        width: 400px;
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #110356;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #020c6b;
+      }
+
+      #resultadoBusca {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #333;
+      }
+      /* Estilo da seta de voltar fixada no topo esquerdo */
+      .voltar-btn {
+        position: fixed;
+        top: 10px;
+        right: 700px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+        z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+      }
+
+      .voltar-btn:hover {
+        color: #333;
+        background-color: #ffffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="voltar-btn" onclick="voltarPagina()">
+      &#8592;
+      <!-- Seta para a esquerda -->
+    </button>
+
+    <div id="form-container">
+      <h2>Buscar Cliente</h2>
+      <form id="buscaForm">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required /><br />
+        <button type="button" id="buscarBtn">Buscar Cliente</button>
+      </form>
+      <div id="resultadoBusca"></div>
+    </div>
+
+    <script>
+      function voltarPagina() {
+        window.location.href = "CGW.html";
+      }
+      // Função para buscar cliente pelo CPF
+      document.getElementById("buscarBtn").onclick = async function () {
+        const cpf = document.getElementById("cpf").value;
+
+        if (!cpf) {
+          alert("Por favor, insira um CPF para buscar!");
+          return;
+        }
+
+        try {
+          // Simulação de uma chamada para o backend (substitua a URL pela sua API real)
+          const response = await fetch(AIzaSyDzRMN63tZex6T645w_JDAfvRzfrN7srR8);
+          if (!response.ok) throw new Error("Erro ao buscar cliente");
+
+          const cliente = await response.json();
+          if (cliente) {
+            document.getElementById("resultadoBusca").innerText =
+              "Cliente encontrado: Nome: ${cliente.nome}, CNPJ: ${cliente.cnpj}, Telefone: ${cliente.telefone}, Email: ${cliente.email}";
+          } else {
+            document.getElementById("resultadoBusca").innerText =
+              "Cliente não encontrado!";
+          }
+        } catch (error) {
+          console.error("Erro:", error);
+          document.getElementById("resultadoBusca").innerText =
+            "Erro ao buscar cliente!";
+        }
+      };
+    </script>
+  </body>
+</html>

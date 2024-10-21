@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--carrega o css-->
+    <link rel="stylesheet" href="global.css" />
+    <title>Cadastro de Clientes</title>
+  </head>
+
+  <body>
+    <div id="form-container">
+      <h2>Cadastro de Clientes</h2>
+      <form id="cadastroForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required /><br /><br />
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required /><br /><br />
+
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" name="cnpj" required /><br /><br />
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" required /><br /><br />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+    <style>
+      .back-button {
+        position: fixed; /* Mantém a seta fixa no canto superior esquerdo */
+        top: 10px; /* Distância do topo */
+        left: 10px; /* Distância da esquerda */
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 24px; /* Tamanho da seta */
+        color: #333; /* Cor da seta */
+        z-index: 1000; /* Garante que a seta fique acima de outros elementos */
+      }
+
+      .back-button:hover {
+        color: #555; /* Cor da seta ao passar o mouse */
+      }
+
+      /* Botão para buscar cliente fixado no topo direito */
+      .buscar-cliente-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #140463;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+        z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+      }
+
+      .buscar-cliente-btn:hover {
+        background-color: #0e0884;
+      }
+    </style>
+    <!-- Botão de seta para voltar à home -->
+    <button class="back-button" onclick="window.location.href='home.html'">
+      &#8592;
+    </button>
+    <!-- Botão fixado na parte superior direita da tela -->
+    <button class="buscar-cliente-btn" onclick="irParaBuscarCliente()">
+      Buscar Cliente
+    </button>
+
+    <script>
+      function irParaBuscarCliente() {
+        window.location.href = "buscarcliente.html";
+      }
+      document.body.style.display = "flex";
+      document.body.style.justifyContent = "center";
+      document.body.style.alignItems = "center";
+      document.body.style.height = "100vh";
+      document.body.style.backgroundColor = "#f0f2f5";
+      document.body.style.margin = "0";
+
+      const formContainer = document.getElementById("form-container");
+      formContainer.style.backgroundColor = "#ffffff";
+      formContainer.style.padding = "30px";
+      formContainer.style.marginTop = "10px";
+      formContainer.style.marginBottom = "10px";
+      formContainer.style.borderRadius = "8px";
+      formContainer.style.boxShadow = "0 0 15px rgba(0, 0, 0, 0.2)";
+      formContainer.style.width = "400px";
+
+      const formTitle = formContainer.querySelector("h2");
+      formTitle.style.textAlign = "center";
+      formTitle.style.color = "#333";
+
+      const formLabels = document.querySelectorAll("label");
+      formLabels.forEach((label) => {
+        label.style.display = "block";
+        label.style.marginBottom = "5px";
+        label.style.color = "#333";
+        label.style.fontWeight = "bold";
+      });
+
+      const formInputs = document.querySelectorAll("input");
+      formInputs.forEach((input) => {
+        input.style.width = "100%";
+        input.style.padding = "10px";
+        input.style.marginBottom = "15px";
+        input.style.border = "1px solid #ccc";
+        input.style.borderRadius = "5px";
+        input.style.boxSizing = "border-box";
+        input.style.fontSize = "14px";
+      });
+
+      const submitButton = document.querySelector('button[type="submit"]');
+      submitButton.style.width = "100%";
+      submitButton.style.padding = "10px";
+      submitButton.style.backgroundColor = "#110356";
+      submitButton.style.color = "#fff";
+      submitButton.style.border = "none";
+      submitButton.style.borderRadius = "5px";
+      submitButton.style.fontSize = "16px";
+      submitButton.style.cursor = "pointer";
+      submitButton.style.transition = "background-color 0.3s";
+
+      submitButton.addEventListener("mouseover", () => {
+        submitButton.style.backgroundColor = "#1a0580";
+      });
+
+      submitButton.addEventListener("mouseout", () => {
+        submitButton.style.backgroundColor = "#110356";
+      });
+      // Validar CPF
+      function validarCPF(cpf) {
+        cpf = cpf.replace(/[^\d]+/g, "");
+        if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+        let soma = 0,
+          resto;
+        for (let i = 1; i <= 9; i++)
+          soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+        soma = 0;
+        for (let i = 1; i <= 10; i++)
+          soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        return resto === parseInt(cpf.substring(10, 11));
+      }
+
+      // Validar CNPJ
+      function validarCNPJ(cnpj) {
+        cnpj = cnpj.replace(/[^\d]+/g, "");
+        if (cnpj.length !== 14) return false;
+
+        let tamanho = cnpj.length - 2;
+        let numeros = cnpj.substring(0, tamanho);
+        let digitos = cnpj.substring(tamanho);
+        let soma = 0;
+        let pos = tamanho - 7;
+
+        for (let i = tamanho; i >= 1; i--) {
+          soma += numeros.charAt(tamanho - i) * pos--;
+          if (pos < 2) pos = 9;
+        }
+        let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+        if (resultado != digitos.charAt(0)) return false;
+
+        tamanho = tamanho + 1;
+        numeros = cnpj.substring(0, tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (let i = tamanho; i >= 1; i--) {
+          soma += numeros.charAt(tamanho - i) * pos--;
+          if (pos < 2) pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+        return resultado == digitos.charAt(1);
+      }
+
+      // Validar e-mail
+      function validarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
+
+      // Validar telefone
+      function validarTelefone(telefone) {
+        const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}[-]?\d{4}$/;
+        return regex.test(telefone);
+      }
+
+      // Enviar Email
+      function enviarEmail(email) {
+        alert(
+          `E-mail enviado para ${email} com a mensagem: "Seu cadastro foi um sucesso"`
+        );
+      }
+
+      // Enviar formulario
+      function enviarFormulario(event) {
+        event.preventDefault();
+        const nome = document.getElementById("nome").value;
+        const cpf = document.getElementById("cpf").value;
+        const cnpj = document.getElementById("cnpj").value;
+        const telefone = document.getElementById("telefone").value;
+        const email = document.getElementById("email").value;
+
+        if (!validarCPF(cpf)) {
+          alert("CPF invalido!");
+          return;
+        }
+
+        if (!validarCNPJ(cnpj)) {
+          alert("CNPJ invalido!");
+          return;
+        }
+
+        if (!validarTelefone(telefone)) {
+          alert("Telefone invalido!");
+          return;
+        }
+
+        if (!validarEmail(email)) {
+          alert("E-mail invalido!");
+          return;
+        }
+
+        enviarEmail(email);
+        alert("Cadastro realizado com sucesso!");
+      }
+    </script>
+  </body>
+</html>

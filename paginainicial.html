@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Botão de acesso ao site */
+        .btn-entrar {
+            position: fixed; /* Mantém o botão fixo no canto superior */
+            top: 20px;
+            right: 20px; /* Move o botão para o lado direito */
+            background-color: #110356;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 10; /* Garantir que o botão esteja acima de outros elementos */
+        }
+
+        .btn-entrar:hover {
+            background-color: #110356;
+        }
+
+        /* Contêiner principal */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo da seção do lado direito (Quem somos?) */
+        .quem-somos, .mvv {
+            width: 48%;
+        }
+
+        .quem-somos h2, .mvv h2 {
+            color: #110356;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .quem-somos p, .mvv p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Estilo dos cards */
+        .card {
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #4caf50;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão de acesso ao site -->
+    <a href="home.html" class="btn-entrar">Entre no site</a>
+
+    <div class="container">
+        <!-- Seção "Nosso MVV" -->
+        <div class="mvv">
+            <h2>Nosso MVV</h2>
+            
+            <div class="card">
+                <h3>Missão:</h3>
+                <p>Nossa missão é fornecer soluções de design gráfico inovadoras e de alta qualidade aos nossos clientes. Nós nos esforçamos para superar suas expectativas, entregando um trabalho excepcional que seja visualmente deslumbrante e funcional. Temos o compromisso de construir relacionamentos duradouros com nossos clientes e fornecer-lhes o melhor serviço possível.</p>
+            </div>
+
+            <div class="card">
+                <h3>Visão:</h3>
+                <p>Nossa visão é nos tornarmos um fornecedor líder de serviços de design gráfico no setor. Nosso objetivo é conseguir isso melhorando continuamente nossas habilidades e nos mantendo atualizados com as últimas tendências e tecnologias de design. Queremos ser reconhecidos pela nossa criatividade, profissionalismo e compromisso com a excelência.</p>
+            </div>
+
+            <div class="card">
+                <h3>Valores:</h3>
+                <p>Criatividade<br>
+                   Profissionalismo<br>
+                   Colaboração<br>
+                   Qualidade<br>
+                   Integridade<br>
+                   Melhoria Contínua
+                </p>
+            </div>
+        </div>
+
+        <!-- Seção "Quem somos?" -->
+        <div class="quem-somos">
+            <h2>Quem somos?</h2>
+            <p>Desde 1993, a Computer Graphics Works Company cresceu tanto como desenvolvedora quanto como facilitadora na implementação de novas tecnologias. Com foco na satisfação total do cliente, a empresa está em constante evolução com as novidades do mercado, investindo e estudando continuamente a aplicabilidade de novas tecnologias como Realidade Aumentada e Realidade Virtual.</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversa no WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #110356;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #1a0776;
+        }
+         /* Estilo da seta de voltar fixada no topo esquerdo */
+      .voltar-btn {
+        position: fixed;
+        top: 10px;
+        right: 1430px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+        z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+      }
+
+      .voltar-btn:hover {
+        color: #333;
+        background-color: #ffffff00;
+      }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="voltar-btn">←</a>
+    <div class="container">
+        <h2>Iniciar uma conversa no WhatsApp</h2>
+        <button id="whatsappButton">Conversar Agora</button>
+    </div>
+
+    <script>
+        document.getElementById('whatsappButton').addEventListener('click', function() {
+            const telefone = '553484237431'; // Substitua pelo número de telefone desejado com código do país
+            const mensagem = 'Olá, gostaria de saber mais informações sobre a CGW, ou tirar algumas duvidas.'; // Mensagem 
+            const link = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+            // Redireciona para o WhatsApp 
+            window.location.href = link;
+        });
+    </script>
+
+</body>
+</html>

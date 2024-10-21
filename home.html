@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      /* Estilo básico para a aparência da página */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+      }
+
+      header {
+        background-color: #ffffff;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+      }
+
+      header img{
+     height: 80%;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        background-color: #333;
+      }
+
+      nav a {
+        padding: 14px 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+      }
+
+      nav a:hover {
+        background-color: #110356;
+        color: white;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 80vh;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .content h1 {
+        color: #333;
+      }
+
+      .search-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        width: 350px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #110356;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #1a0485;
+      }
+      /* Estilo da sidebar */
+      .sidebar {
+        width: 250px;
+        background-color: #333;
+        color: white;
+        overflow-y: auto;
+        height: 100vh;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        position: fixed;
+      }
+
+      .sidebar h2 {
+        color: #007bff;
+        margin: 0 0 10px;
+      }
+
+      .sidebar p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img src="logo.png" alt="logotipo cgw">
+    </header>
+
+    <nav>
+      <a href="paginainicial.html">Sobre nós</a>
+      <a href="CGW.html">Cadastro de Clientes</a>
+      <a href="pagamento.html">Pagamento</a>
+      <a href="nossosprojetos.html">Nossos Projetos</a>
+      <a href="whatsapp.html">Converse no WhatsApp</a>
+    </nav>
+
+    <div class="content">
+      <h1>Bem-vindo à nossa aplicação!</h1>
+      <p>Use o menu acima para navegar.</p>
+
+    </div>
+  </body>
+</html>

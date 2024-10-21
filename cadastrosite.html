@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .cadastro-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .error-message {
+        color: red;
+        font-size: 14px;
+        display: none;
+        margin-bottom: 10px;
+      }
+      .btn-container {
+        margin-top: 20px;
+      }
+      .btn-container button {
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #110356;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .btn-container button:hover {
+        background-color: #140463;
+      }
+
+      /* Estilo para o link "Já tem login?" */
+      .login-link {
+        color: #110356;
+        text-decoration: none;
+      }
+      .login-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Estilo para a seta de voltar */
+      .back-arrow {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+        text-decoration: none;
+        color: #333;
+      }
+      .back-arrow:hover {
+        color: #034994;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Seta de voltar para a home -->
+    <a href="home.html" class="back-arrow">←</a>
+
+    <div class="cadastro-container">
+      <h2>Cadastro</h2>
+      <form id="cadastroForm">
+        <input
+          type="email"
+          id="email"
+          placeholder="Digite seu email"
+          required
+        />
+        <input
+          type="password"
+          id="senha"
+          placeholder="Digite sua senha"
+          required
+        />
+        <div class="error-message" id="error-message"></div>
+      </form>
+      <div class="btn-container">
+        <button type="submit" form="cadastroForm" id="cadastrarBtn">
+          Cadastrar
+        </button>
+        <p style="display: flex; justify-content: center; align-items: center">
+          Já possui uma conta? &nbsp;
+          <a href="login.html" class="login-link"> Entre aqui</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("cadastroForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Impede o envio padrão do formulário
+          const email = document.getElementById("email").value;
+          const senha = document.getElementById("senha").value;
+          const errorMessage = document.getElementById("error-message");
+
+          // Validação de e-mail usando uma expressão regular simples
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            errorMessage.textContent = "Por favor, insira um e-mail válido.";
+            errorMessage.style.display = "block";
+            return;
+          }
+
+          // Validação de senha para ter pelo menos 6 caracteres
+          if (senha.length < 6) {
+            errorMessage.textContent =
+              "A senha deve ter pelo menos 6 caracteres.";
+            errorMessage.style.display = "block";
+            return;
+          }
+
+          // Se todas as validações passarem, oculta a mensagem de erro e processa o formulário
+          errorMessage.style.display = "none";
+
+          // enviar os dados ao servidor ou ao Firebase
+          console.log("Formulário válido! Pronto para enviar.");
+          // Redireciona após a validação
+        });
+    </script>
+  </body>
+</html>
